@@ -28,11 +28,12 @@
             <h3 class="mt-5">Matching Travel Buddies:</h3>
             <ul class="list-group">
                 {% for buddy in buddies %}
-                    <li class="list-group-item">
-                        <strong>{{ buddy.name }}</strong> - Interested in traveling to {{ buddy.destination }} for some {{ buddy.interest }} from {{ buddy.start_date }} to {{ buddy.end_date }}.
-                    </li>
+                <li class="list-group-item">
+                    <strong>{{ buddy.name }}</strong> - Interested in traveling to {{ buddy.destination }} for some {{
+                    buddy.interest }} from {{ buddy.start_date }} to {{ buddy.end_date }}.
+                </li>
                 {% else %}
-                    <li class="list-group-item">No matching travel buddies found at the moment.</li>
+                <li class="list-group-item">No matching travel buddies found at the moment.</li>
                 {% endfor %}
             </ul>
 
@@ -41,6 +42,7 @@
         </div>
     </div>
     {% endblock %}
+
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import firebase_admin
 from firebase_admin import credentials, firestore, auth
 from firebase_admin.exceptions import FirebaseError
+from datetime import datetime
 import os
 
 # Initialize Flask app
@@ -154,8 +155,8 @@ def find_buddies():
     # Get user details
     destination = user["destination"]
     interest = user["interest"]
-    start_date = user["travel_dates"]["start_date"]
-    end_date = user["travel_dates"]["end_date"]
+    start_date = datetime.strptime(user["travel_dates"]["start_date"], "%Y-%m-%d")
+    end_date = datetime.strptime(user["travel_dates"]["end_date"], "%Y-%m-%d")
 
     # Query Firestore for users with matching destination and interest
     matching_users = db.collection("users").where("destination", "==", destination).where("interest", "==", interest).stream()
@@ -165,8 +166,8 @@ def find_buddies():
         buddy_data = buddy.to_dict()
 
         # Get buddy's travel dates
-        buddy_start_date = buddy_data["travel_dates"]["start_date"]
-        buddy_end_date = buddy_data["travel_dates"]["end_date"]
+        buddy_start_date = datetime.strptime(buddy_data["travel_dates"]["start_date"], "%Y-%m-%d")
+        buddy_end_date = datetime.strptime(buddy_data["travel_dates"]["end_date"], "%Y-%m-%d")
 
         # Check if travel dates overlap (simple comparison logic, you can improve this)
         if start_date <= buddy_end_date and end_date >= buddy_start_date:
@@ -174,7 +175,9 @@ def find_buddies():
                 "name": buddy_data["name"],
                 "email": buddy_data["email"],
                 "destination": buddy_data["destination"],
-                "interest": buddy_data["interest"]
+                "interest": buddy_data["interest"],
+                "start_date": buddy_data["travel_dates"]["start_date"],
+                "end_date": buddy_data["travel_dates"]["end_date"]
             })
 
     return render_template("buddies.html", buddies=buddies)
