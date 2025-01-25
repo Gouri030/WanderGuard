@@ -35,6 +35,9 @@
                     <li class="list-group-item">No matching travel buddies found at the moment.</li>
                 {% endfor %}
             </ul>
+
+            <!-- Logout button -->
+            <a href="{{ url_for('logout') }}" class="btn btn-danger mt-4">Logout</a>
         </div>
     </div>
     {% endblock %}
