@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- You can link Bootstrap CSS here -->
+</head>
+
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <!-- Travel Buddy Form Section -->
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Find Your Travel Buddy</h2>
+                    <p class="card-text text-center mb-4">Plan your trip and find the perfect travel companion!</p>
+
+                    <!-- Travel Form -->
+                    <form action="/buddy" method="POST">
+                        <!-- Interest -->
+                        <div class="form-group">
+                            <label for="interest">What are you looking forward to in your travel?</label>
+                            <input type="text" class="form-control" id="interest" name="interest"
+                                placeholder="Adventure, relaxation, sightseeing..." required>
+                        </div>
+
+                        <!-- Destination -->
+                        <div class="form-group">
+                            <label for="destination">Where are you traveling to?</label>
+                            <input type="text" class="form-control" id="destination" name="destination"
+                                placeholder="Paris, Bali, etc." required>
+                        </div>
+
+                        <!-- Dates -->
+                        <div class="form-group">
+                            <label for="dates">When are you traveling?</label>
+                            <input type="text" class="form-control" id="dates" name="dates"
+                                placeholder="e.g., 12th Feb to 18th Feb" required>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Find a Travel Buddy</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+</body>
+
+</html>
