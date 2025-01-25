@@ -22,14 +22,14 @@
             <p><strong>Email:</strong> {{ email }}</p>
             <p><strong>Looking for:</strong> {{ interest }}</p>
             <p><strong>Destination:</strong> {{ destination }}</p>
-            <p><strong>Travel Dates:</strong> {{ dates }}</p>
+            <p><strong>Travel Dates:</strong> {{ start_date }} to {{ end_date }}</p>
 
             <!-- Section for showing matching travel buddies -->
             <h3 class="mt-5">Matching Travel Buddies:</h3>
             <ul class="list-group">
                 {% for buddy in buddies %}
                     <li class="list-group-item">
-                        <strong>{{ buddy.name }}</strong> - Interested in traveling to {{ buddy.destination }} for some {{ buddy.interest }} from {{ buddy.dates }}.
+                        <strong>{{ buddy.name }}</strong> - Interested in traveling to {{ buddy.destination }} for some {{ buddy.interest }} from {{ buddy.start_date }} to {{ buddy.end_date }}.
                     </li>
                 {% else %}
                     <li class="list-group-item">No matching travel buddies found at the moment.</li>

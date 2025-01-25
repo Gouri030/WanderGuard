@@ -26,51 +26,52 @@
                         <!-- Name -->
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+                            <input type="text" class="form-control" id="name" name="name" required>
                         </div>
 
                         <!-- Email -->
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com" required>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
 
                         <!-- Interest -->
                         <div class="form-group">
-                            <label for="interest">What are you looking forward to in your travel?</label>
-                            <input type="text" class="form-control" id="interest" name="interest" placeholder="Adventure, relaxation, sightseeing..." required>
+                            <label for="interest">What are you interested in?</label>
+                            <input type="text" class="form-control" id="interest" name="interest" required>
                         </div>
 
                         <!-- Destination -->
                         <div class="form-group">
                             <label for="destination">Where are you traveling to?</label>
-                            <input type="text" class="form-control" id="destination" name="destination" placeholder="Paris, Bali, etc." required>
+                            <input type="text" class="form-control" id="destination" name="destination" required>
                         </div>
 
-                        <!-- Dates -->
-                        <div class="form-group">
-                            <label for="dates">When are you traveling?</label>
-                            <input type="text" class="form-control" id="dates" name="dates" placeholder="e.g., 2025-03-01 to 2025-03-15" required>
+                        <!-- Travel Dates -->
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="start_date">Start Date</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date" required>
+                            </div>
+                            <div class="col">
+                                <label for="end_date">End Date</label>
+                                <input type="date" class="form-control" id="end_date" name="end_date" required>
+                            </div>
                         </div>
 
                         <!-- Submit Button -->
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg w-100">Find a Travel Buddy</button>
-                        </div>
+                        <button type="submit" class="btn btn-primary btn-block mt-4">Find Travel Buddies</button>
                     </form>
-                    <!-- Link to Registration Page -->
-                    <div class="text-center mt-3">
-                        <a href="/register" class="btn btn-link">Register to become a member</a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
     {% endblock %}
 
-    <!-- Link to Firebase app.js script -->
-    <script type="module" src="{{ url_for('static', filename='app.js') }}"></script>
-
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
