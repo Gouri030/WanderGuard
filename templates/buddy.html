@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    {% extends "base.html" %}
+
+    {% block content %}
     <div class="container">
         <div class="text-center mt-5">
             <h2 class="mb-4">Your Travel Match</h2>
@@ -24,18 +27,17 @@
             <!-- Section for showing matching travel buddies -->
             <h3 class="mt-5">Matching Travel Buddies:</h3>
             <ul class="list-group">
-                <!-- Example buddy 1 -->
-                <li class="list-group-item">
-                    <strong>Alice</strong> - Interested in traveling to {{ destination }} for some {{ interest }} from {{ dates }}.
-                </li>
-                
-                <!-- Example buddy 2 -->
-                <li class="list-group-item">
-                    <strong>Bob</strong> - Looking to travel to {{ destination }} for {{ interest }} between {{ dates }}.
-                </li>
+                {% for buddy in buddies %}
+                    <li class="list-group-item">
+                        <strong>{{ buddy.name }}</strong> - Interested in traveling to {{ buddy.destination }} for some {{ buddy.interest }} from {{ buddy.dates }}.
+                    </li>
+                {% else %}
+                    <li class="list-group-item">No matching travel buddies found at the moment.</li>
+                {% endfor %}
             </ul>
         </div>
     </div>
+    {% endblock %}
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
